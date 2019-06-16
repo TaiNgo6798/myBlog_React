@@ -16,7 +16,7 @@ class Home extends Component {
                 <br />
                 <br />
                 <h1 className = "tieude-welcome">
-                  <span >CHÀO MỪNG CÁC BẠN ĐẾN VỚI BLOG CỦA TRANG !</span>
+                  <span >CHÀO MỪNG CÁC BẠN ĐẾN VỚI BLOG CỦA TRANGggg !</span>
                 </h1>
                 <br />
                 <br />
