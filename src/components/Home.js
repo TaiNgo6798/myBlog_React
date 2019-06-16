@@ -16,7 +16,7 @@ class Home extends Component {
                 <br />
                 <br />
                 <h3>
-                  <span >CHÀO MỪNG CÁC BẠN ĐẾN VỚI BLOG CỦA TRANG !</span>
+                  <span >CHÀO MỪNG CÁC BẠN ĐẾN VỚI BLOG CỦA TRANGgggg !</span>
                 </h3>
                 <br />
                 <br />
