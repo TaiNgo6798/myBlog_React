@@ -15,9 +15,9 @@ class Home extends Component {
                 <img src="img/profile.png" className="rounded-circle" alt="" />
                 <br />
                 <br />
-                <h3>
-                  <span >CHÀO MỪNG CÁC BẠN ĐẾN VỚI BLOG CỦA TRANGgggg !</span>
-                </h3>
+                <h1 className = "tieude-welcome">
+                  <span >CHÀO MỪNG CÁC BẠN ĐẾN VỚI BLOG CỦA TRANG !</span>
+                </h1>
                 <br />
                 <br />
                 <br />

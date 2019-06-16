@@ -21,7 +21,7 @@ class ArticleDetail extends Component {
                                             <div className="card-detail" >
                                                 <img className="card-img-top-detail" src={value.anh} alt="" />
                                                 <div className="card-body">
-                                                    <h4 className="card-title text-center">{value.tieude}</h4>
+                                                    <h2 className="card-title text-center">{value.tieude}</h2>
                                                     <p className="card-text">
                                                         {value.noidung}
                                                        

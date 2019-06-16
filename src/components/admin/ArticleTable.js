@@ -50,7 +50,7 @@ class ArticleTable extends Component {
                                         <TableDataRow key = {key} No = {key} Title = {value.Title} Author = {value.Author} PostDay = {value.PostDay} id = {value.id} editArticle = {(row) => {this.props.editArticle(row)}} deleteArticle = {(articleid) => {this.props.deleteArticle(articleid)}}/>
                                 )
                              return(
-                                 <div>Nothing</div>
+                                 <div></div>
                              )
                         })
                         

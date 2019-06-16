@@ -39,7 +39,7 @@ class SuggestArticlesList extends Component {
                         <img  className="card-img-top" src={this.props.linkanh} alt = "a" />
                         </Link>
                         <div className="card-body">
-                            <h5 className="card-title">{this.props.tieude}</h5>
+                            <h3 className="card-title">{this.props.tieude}</h3>
                             <p className="card-text">{this.props.trichdan}</p>
                         </div>
                     </div>

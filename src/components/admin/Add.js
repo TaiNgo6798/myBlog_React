@@ -1,18 +1,17 @@
 import React, { Component } from 'react';
 import Swal from 'sweetalert2';
 const uuidv1 = require('uuid/v1');
-
+const defaultStateValue = {
+            Title: "",
+            Author: "",
+            PostDay: ""
+}
 
 class Add extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {
-
-            Title: "",
-            Author: "",
-            PostDay: ""
-        }
+        this.state = defaultStateValue;
     }
 
 
@@ -34,6 +33,9 @@ class Add extends Component {
     }
 
     createArticle = () => {
+        console.log(this.state.Title);
+        console.log(this.state.Author);
+        console.log(this.state.PostDay);
         if(this.state.Title !== "" && this.state.Author !== "" && this.state.PostDay !== "")
         {
             var article = {
@@ -43,6 +45,7 @@ class Add extends Component {
                 PostDay: this.state.PostDay
             };
             this.props.submitAdd(article);
+            
         }
         else 
         {
@@ -54,6 +57,7 @@ class Add extends Component {
                
               })
         }
+        this.setState(defaultStateValue)
        
     }
 

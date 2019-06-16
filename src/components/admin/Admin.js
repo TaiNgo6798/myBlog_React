@@ -96,8 +96,6 @@ class Admin extends Component {
                     value.Author = article.Author;
                 if(article.PostDay !== "")
                     value.PostDay = article.PostDay;
-                    
-                
             }
         }
         );
@@ -105,7 +103,8 @@ class Admin extends Component {
         this.setState({
             articles: newArticles
         });
-        console.log(this.state.articles)
+        
+    
         
     }
 

@@ -1,15 +1,20 @@
 import React, { Component } from 'react';
 
+const defaultStateValue = {
+    Title: "",
+    Author: "",
+    PostDay: ""
+}
+
 class EditForm extends Component {
     
     constructor(props) {
         super(props);
-        this.state = {
-            Title: "",
-            Author: "",
-            PostDay: ""
-        }
+        this.state = defaultStateValue;
+   
     }
+
+
 
 
     isChange = (event, stt) => {
@@ -41,6 +46,9 @@ class EditForm extends Component {
         };
         
         this.props.submitEdit(article);
+       
+        this.setState(defaultStateValue)
+        console.log(this.state);
     }
 
 
