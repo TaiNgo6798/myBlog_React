@@ -8,7 +8,7 @@ class Home extends Component {
     return (
 
       <div>
-        <section >
+        <section name = "head">
           <div className="container">
             <div className="row">
               <div className="col-lg-12 text-center">
@@ -16,7 +16,7 @@ class Home extends Component {
                 <br />
                 <br />
                 <h1 className = "tieude-welcome">
-                  <span >CHÀO MỪNG CÁC BẠN ĐẾN VỚI BLOG CỦA TRANGggg !</span>
+                  <span >CHÀO MỪNG CÁC BẠN ĐẾN VỚI BLOG CỦA MÌNH !</span>
                 </h1>
                 <br />
                 <br />

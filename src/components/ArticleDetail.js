@@ -23,6 +23,7 @@ class ArticleDetail extends Component {
                                                 <div className="card-body">
                                                     <h2 className="card-title text-center">{value.tieude}</h2>
                                                     <p className="card-text">
+                                                        {value.tacgia}<br/>
                                                         {value.noidung}
                                                        
                                                     </p>
