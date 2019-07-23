@@ -102,8 +102,17 @@ section h3.section-subheading {
   }
 }
 
+.addCard{
+  width: 100%;
+}
 
+.imgPreview{
+  width: 100%;
+}
 
+.filetype{
+  width: 100%
+}
 
 img::selection {
   background: transparent;

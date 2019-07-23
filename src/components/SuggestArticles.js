@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
+import htmlParser from 'react-html-parser';
+
+
 class SuggestArticlesList extends Component {
 
 
@@ -35,18 +38,18 @@ class SuggestArticlesList extends Component {
         return (
             <div className="col-lg-3">
                 <div className="card">
-                    <Link to={"/articles/" + this.chuyendoiURL(this.props.tieude) + "." + this.props.articleId + ".html"}>
-                        <img className="card-img-top" src={this.props.linkanh} alt="a"/>
+                    <Link to={"/articles/" + this.chuyendoiURL(this.props.Title) + "." + this.props.id + ".html"}>
+                        <img className="card-img-top" src={this.props.imgLink} alt="a"/>
                     </Link>
                     <div className="card-body">
                         <h5 className="card-title">
                             <p>
                                 <b>
-                                {this.props.tieude}
+                                {this.props.Title}
                                 </b>
                             </p>
                         </h5>
-                        <p className="card-text">{this.props.trichdan}</p>
+                        <p className="card-text">{htmlParser(this.props.Quote)}</p>
                     </div>
                 </div>
             </div>

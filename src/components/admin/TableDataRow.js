@@ -31,8 +31,11 @@ class TableDataRow extends Component {
         var row = {
             id: this.props.id,
             Title: this.props.Title,
+            Quote: this.props.Quote,
             Author: this.props.Author,
-            PostDay: this.props.PostDay
+            PostDay: this.props.PostDay,
+            Content: this.props.Content,
+            imgLink: this.props.imgLink
         };
            
         

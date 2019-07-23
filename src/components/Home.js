@@ -1,8 +1,56 @@
 import React, { Component } from 'react';
-import dl from './dulieu.json';
+
 import SuggestArticlesList from './SuggestArticles';
+import {articleData} from './fireBase/firebaseConnect';
+
+
 
 class Home extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+        
+        articles: []
+        
+    }
+}
+
+
+  componentWillMount() {
+    articleData.on('value', (articles) => {
+        var arrayData1 = [];
+        articles.forEach(element => {
+            const key = element.key
+            const title = element.val().title;
+            const quote = element.val().quote;
+            const author = element.val().author;
+            const postDay = element.val().postDay;
+            const content = element.val().content;
+            const imgLink = element.val().imgLink;
+
+            console.log(element.val());
+
+            arrayData1.push({
+                id: key,
+                title: title,
+                quote: quote,
+                author: author,
+                postDay: postDay,
+                content: content,
+                imgLink: imgLink
+
+            });
+        }
+        )
+       
+        this.setState({
+            articles: arrayData1
+        })
+    });
+}
+
+
 
   render() {
     return (
@@ -27,10 +75,19 @@ class Home extends Component {
             <div className="row text-center">
               {
 
-                dl.map((value, key) => {
+                this.state.articles.map((v, key) => {
 
                   return (
-                    <SuggestArticlesList key={key} articleId={value.id} linkanh={value.anh} tieude={value.tieude} trichdan={value.trichdan} />
+                    <SuggestArticlesList 
+                    key={key} 
+                    id = {v.id}
+                    Title = {v.title}
+                    Quote = {v.quote}
+                    Author = {v.author}
+                    PostDay = {v.postDay}
+                    Content = {v.content}
+                    imgLink = {v.imgLink}
+                     />
 
                   )
                 })

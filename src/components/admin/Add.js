@@ -1,10 +1,16 @@
 import React, { Component } from 'react';
 import Swal from 'sweetalert2';
+import CKE from 'ckeditor4-react'
+
+
 const uuidv1 = require('uuid/v1');
 const defaultStateValue = {
-            Title: "",
-            Author: "",
-            PostDay: ""
+    Title: "",
+    Quote: "quote ne",
+    Author: "",
+    PostDay: "",
+    Content: "",
+    imgLink: "chua co"
 }
 
 class Add extends Component {
@@ -13,6 +19,7 @@ class Add extends Component {
         super(props);
         this.state = defaultStateValue;
     }
+
 
 
 
@@ -26,63 +33,85 @@ class Add extends Component {
             this.setState({
                 Author: event.target.value
             });
-        if (stt === "postday")
+        if (stt === "content")
             this.setState({
-                PostDay: event.target.value
-            });
+                Content: event.editor.getData()
+            })
     }
 
     createArticle = () => {
-        console.log(this.state.Title);
-        console.log(this.state.Author);
-        console.log(this.state.PostDay);
-        if(this.state.Title !== "" && this.state.Author !== "" && this.state.PostDay !== "")
-        {
+
+
+        if (this.state.Title !== "" && this.state.Author !== "") {
             var article = {
                 id: uuidv1(),
-                Title: this.state.Title,
-                Author: this.state.Author,
-                PostDay: this.state.PostDay
+                title: this.state.Title,
+                quote: this.state.Content.substring(0, 60) + "...",
+                author: this.state.Author,
+                postDay: new Date().toLocaleString(),
+                content: this.state.Content,
+                imgLink: this.state.imgLink
             };
-            this.props.submitAdd(article);
             
+            this.props.submitAdd(article);
+
         }
-        else 
-        {
+        else {
             Swal.fire({
                 title: 'Please complete all information !',
                 type: 'warning',
-                
+
                 confirmButtonColor: '#3085d6',
-               
-              })
+
+            })
         }
         this.setState(defaultStateValue)
-       
+
     }
 
+    onImageChange = (event) => {
+        if (event.target.files && event.target.files[0]) {
+            let reader = new FileReader();
+            reader.onload = (e) => {
+                this.setState({ imgLink: e.target.result });
+            };
+            reader.readAsDataURL(event.target.files[0]);
+            
+        }
+    }
 
 
     showAddForm = () => {
         if (this.props.isAdd === true)
             return (
-                <div className="col">
-                    <div className="card border-success mb-3" style={{ maxWidth: '18rem' }}>
-                        <div className="card-header text-center">Add new article</div>
-                        <div className="card-body text-success">
-                            <form>
-                                <input className="form-control" name="title" type="text" placeholder="Title" onChange={(event) => { this.isChange(event, "tittle") }}  />
-                                <br />
-                                <input className="form-control " name="author" type="text" placeholder="Author" onChange={(event) => { this.isChange(event, "author") }} />
-                                <br />
-                                <input className="form-control" name="postday" type="datetimepicker" placeholder="Post-Day" onChange={(event) => { this.isChange(event, "postday") }} />
-                                <br />
+                <div className="row">
+                    <div className="col-4">
+                        <div className="card border addCard" >
+                            <div className="card-header text-center">Add new article</div>
+                            <div className="card-body text-success">
+                                <form>
+                                    <input className="form-control" name="title" type="text" placeholder="Title" onChange={(event) => { this.isChange(event, "tittle") }} />
+                                    <br />
+                                    <input className="form-control " name="author" type="text" placeholder="Author" onChange={(event) => { this.isChange(event, "author") }} />
+                                    <br />
+
+                                    <img className="imgPreview" id="target" src={this.state.imgLink} /><br /><br />
+                                    <input type="file" onChange={this.onImageChange} className="filetype" id="group_image" />
+                                    <br />
+
+                                </form>
+                                <hr/>
                                 <button type="reset" className="btn btn-block btn-primary" onClick={() => this.createArticle()} >Add</button>
                                 <input type="button" className="btn btn-block btn-secondary" onClick={() => { this.props.closeBtn() }} value="Close" />
-                            </form>
+                            </div>
                         </div>
+
+                    </div>
+                    <div className = "col-8">
+                        <CKE  onChange = {(event) => this.isChange(event,"content")}  />
                     </div>
                 </div>
+
             )
     }
 

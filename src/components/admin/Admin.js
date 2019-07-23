@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import ArticleTable from './ArticleTable';
 import Add from './Add';
 import Search from './Search';
-import dl from '../accountList.json';
 import EditForm from './EditForm';
+import { articleData } from '../fireBase/firebaseConnect';
+
+
 class Admin extends Component {
 
     constructor(props) {
@@ -11,11 +13,62 @@ class Admin extends Component {
         this.state = {
             isAdd: false,
             searchText: "",
-            articles: dl,
+            articles: [],
             isEdit: false,
             editArticle: ""
         }
     }
+
+
+    componentWillMount() {
+        articleData.on('value', (articles) => {
+            var arrayData1 = [];
+            articles.forEach(element => {
+                const key = element.key
+                const title = element.val().title;
+                const quote = element.val().quote;
+                const author = element.val().author;
+                const postDay = element.val().postDay;
+                const content = element.val().content;
+                const imgLink = element.val().imgLink;
+
+                console.log(element.val());
+
+                arrayData1.push({
+                    id: key,
+                    title: title,
+                    quote: quote,
+                    author: author,
+                    postDay: postDay,
+                    content: content,
+                    imgLink: imgLink
+
+                });
+            }
+            )
+           
+            this.setState({
+                articles: arrayData1
+            })
+        });
+    }
+
+    getData = () => {
+        if(this.state.articles)
+     
+            return(
+                
+                <ArticleTable 
+                searchText={this.state.searchText} 
+                data={this.state.articles} 
+                editArticle={(row) => { this.editArticle(row) }} 
+                deleteArticle={(articleid) => { this.submitDelete(articleid) }}/>
+            )
+        
+      
+    }
+
+
     changeisAdd = () => {
         this.setState({
             isAdd: !this.state.isAdd,
@@ -24,17 +77,17 @@ class Admin extends Component {
     }
 
     changeisEdit = (isEdit) => {
-        if(isEdit === true)
-        this.setState({
-            isEdit: true,
-            isAdd: false
+        if (isEdit === true)
+            this.setState({
+                isEdit: true,
+                isAdd: false
 
-        });
-        else 
-        if(isEdit === false)
-        this.setState({
-            isEdit: false
-        });
+            });
+        else
+            if (isEdit === false)
+                this.setState({
+                    isEdit: false
+                });
 
     }
 
@@ -51,50 +104,32 @@ class Admin extends Component {
             editArticle: row
         }
         );
-      
-        
+
+
     }
 
     submitAdd = (article) => {
 
-        var newArticles = this.state.articles;
-        newArticles.push(article);
-        this.setState({
-            articles: newArticles
-        });
+       articleData.push(article);
 
     }
 
     submitDelete = (articleid) => {
-        var newArticles = this.state.articles;
-        
-        newArticles.forEach((value,key) => {
-            if(value.id === articleid)
-            {
-                newArticles.splice(key,1);
-            }
-        });
-
-        
-
-        this.setState({
-            articles: newArticles
-        });
+        articleData.child(articleid).remove();
     }
 
     submitEdit = (article) => {
 
         var newArticles = this.state.articles;
-       
-        newArticles.forEach((value,key) => {
-            if(value.id === article.id)
-            {
-               
-                if(article.Title !== "")
+
+        newArticles.forEach((value, key) => {
+            if (value.id === article.id) {
+
+                if (article.Title !== "")
                     value.Title = article.Title;
-                if(article.Author !== "")
+                if (article.Author !== "")
                     value.Author = article.Author;
-                if(article.PostDay !== "")
+                if (article.PostDay !== "")
                     value.PostDay = article.PostDay;
             }
         }
@@ -103,9 +138,9 @@ class Admin extends Component {
         this.setState({
             articles: newArticles
         });
-        
-    
-        
+
+
+
     }
 
     render() {
@@ -115,6 +150,7 @@ class Admin extends Component {
                     <h1 className="text-center">Articles</h1>
 
                     <div className="container">
+
                         <div className="row">
                             <div className="col-12">
                                 <Search isAdd={this.state.isAdd} changeAddStatus={() => this.changeisAdd()} search={(searchText) => this.searchClick(searchText)} />
@@ -123,14 +159,18 @@ class Admin extends Component {
                             <div className="col-12">
                                 <br />
                             </div>
-                            <div className="col">
-                                <ArticleTable searchText={this.state.searchText} data={this.state.articles} editArticle={(row) => { this.editArticle(row) }} deleteArticle = {(articleid) => {this.submitDelete(articleid)}}/>
+                            <div className = "col-12">
+                            <Add submitAdd={(article) => this.submitAdd(article)} isAdd={this.state.isAdd} closeBtn={() => this.changeisAdd()} />
+                            <EditForm submitEdit={(article) => this.submitEdit(article)} isEdit={this.state.isEdit} closeBtn={() => this.changeisEdit(false)} row={this.state.editArticle} />
+
                             </div>
-                         
-                                <Add submitAdd={(article) => this.submitAdd(article)} isAdd={this.state.isAdd} closeBtn={() => this.changeisAdd()} />
-                                <EditForm submitEdit={(article) => this.submitEdit(article)} isEdit={this.state.isEdit} closeBtn={() => this.changeisEdit(false)} row = {this.state.editArticle}/>
+                            
+                            <div className="col-12">
+                                {this.getData()}
+                            </div>
 
                         </div>
+
                     </div>
                 </section>
 

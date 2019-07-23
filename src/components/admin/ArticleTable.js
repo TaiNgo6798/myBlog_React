@@ -4,6 +4,7 @@ import TableDataRow from './TableDataRow';
 
 class ArticleTable extends Component {
     
+    
 
     render() {
         
@@ -23,21 +24,23 @@ class ArticleTable extends Component {
                     <tbody>
                         
                         {
-                            this.props.data.map((value, key) => {
-                            var searchText;
                             
+                            this.props.data.map((v, key) => {
+                            var searchText;
                             var valueList = [
-                                value.Title,
-                               
-                                value.Author,
-                                value.PostDay,
-                                key.toString()
+                                v.id,
+                                v.title,
+                                v.quote,
+                                v.author,
+                                v.postDay,
+                                v.content,
+                                v.imgLink
                             ];
                             
 
                             if(this.props.searchText === "")
                             {
-                               searchText = value.Title;
+                               searchText = v.title;
                              
                             }
                             else 
@@ -47,7 +50,18 @@ class ArticleTable extends Component {
                             
                             if(valueList.includes(searchText))
                             return (
-                                        <TableDataRow key = {key} No = {key} Title = {value.Title} Author = {value.Author} PostDay = {value.PostDay} id = {value.id} editArticle = {(row) => {this.props.editArticle(row)}} deleteArticle = {(articleid) => {this.props.deleteArticle(articleid)}}/>
+                                        <TableDataRow key = {key} 
+                                        No = {key} 
+                                        Title = {v.title} 
+                                        Quote = {v.quote}
+                                        Author = {v.author} 
+                                        PostDay = {v.postDay} 
+                                        Content = {v.content}
+                                        imgLink = {v.imgLink}
+                                        id = {v.id} 
+
+                                        editArticle = {(row) => {this.props.editArticle(row)}} 
+                                        deleteArticle = {(articleid) => {this.props.deleteArticle(articleid)}}/>
                                 )
                              return(
                                  <div></div>

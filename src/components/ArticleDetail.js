@@ -1,16 +1,62 @@
 import React, { Component } from 'react';
-import dl from './dulieu.json';
+
 import SuggestArticles from './SuggestArticles.js';
+import {articleData} from './fireBase/firebaseConnect';
+import htmlParser from 'react-html-parser';
 
 
 class ArticleDetail extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            
+            articles: []
+            
+        }
+    }
+    
+    
+      componentWillMount() {
+        articleData.on('value', (articles) => {
+            var arrayData1 = [];
+            articles.forEach(element => {
+                const key = element.key
+                const title = element.val().title;
+                const quote = element.val().quote;
+                const author = element.val().author;
+                const postDay = element.val().postDay;
+                const content = element.val().content;
+                const imgLink = element.val().imgLink;
+    
+                console.log(element.val());
+    
+                arrayData1.push({
+                    id: key,
+                    title: title,
+                    quote: quote,
+                    author: author,
+                    postDay: postDay,
+                    content: content,
+                    imgLink: imgLink
+    
+                });
+            }
+            )
+           
+            this.setState({
+                articles: arrayData1
+            })
+        });
+    }
+    
     render() {
         var count = 0;
         return (
             <div>
-                {dl.map((value, key) => {
+                {this.state.articles.map((v, key) => {
                   
-                    if ((value.id).toString() === this.props.match.params.id) {
+                    if ((v.id).toString() === this.props.match.params.id) {
                         
                         return (
                          
@@ -19,14 +65,14 @@ class ArticleDetail extends Component {
                                     <section id="services">
                                         <div className="card-deck">
                                             <div className="card-detail" >
-                                                <img className="card-img-top-detail" src={value.anh} alt="" />
+                                                <img className="card-img-top-detail" src={v.imgLink} alt="" />
                                                 
                                                 <div className="card-body">
-                                                    <h1 className="card-title text-center">{value.tieude}</h1>
+                                                    <h1 className="card-title text-center">{v.title}</h1>
                                                     <br/><br/>
                                                     <p className="card-text">
-                                                        {value.tacgia}<br/>
-                                                        {value.noidung}
+                                                        {v.author}<br/>
+                                                        {htmlParser(v.content)}
                                                        
                                                     </p>
                                                 </div>
@@ -37,12 +83,21 @@ class ArticleDetail extends Component {
                                         <div className="row text-center" >
                                             {
                                                 //do cac bai viet trong json 
-                                                dl.map((value, key) => {
+                                                this.state.articles.map((v, key) => {
 
-                                                    if (value.id.toString() !== this.props.match.params.id && count <= 3) {
+                                                    if (v.id.toString() !== this.props.match.params.id && count <= 3) {
                                                         count++;
                                                         return (
-                                                            <SuggestArticles key={key} articleId={value.id} linkanh={value.anh} tieude={value.tieude} trichdan={value.trichdan} />
+                                                            <SuggestArticles
+                                                            key={key} 
+                                                            id = {v.id}
+                                                            Title = {v.title}
+                                                            Quote = {v.quote}
+                                                            Author = {v.author}
+                                                            PostDay = {v.postDay}
+                                                            Content = {v.content}
+                                                            imgLink = {v.imgLink}
+                                                             />
                                                         )
                                                         
                                                     }
