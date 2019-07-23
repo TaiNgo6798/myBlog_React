@@ -39,6 +39,7 @@
   overflow-x: hidden;
   font-family: 'Quicksand', sans-serif;
   font-weight: 500;
+  background-color: #fafafa;
 }
 
 p {
@@ -72,8 +73,8 @@ h3,
 h5,
 h4,
 h6 {
-  font-weight: 400;
-  font-family: 'Roboto Condensed', sans-serif;
+  font-weight: 500;
+  font-family: 'Quicksand', sans-serif;
 }
 
 
@@ -113,7 +114,8 @@ img::-moz-selection {
 }
 
 #mainNav {
-  background-color: #212529;
+   
+  background-color: white;
 }
 
 #mainNav .navbar-toggler {

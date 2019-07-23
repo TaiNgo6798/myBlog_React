@@ -20,8 +20,10 @@ class ArticleDetail extends Component {
                                         <div className="card-deck">
                                             <div className="card-detail" >
                                                 <img className="card-img-top-detail" src={value.anh} alt="" />
+                                                
                                                 <div className="card-body">
-                                                    <h2 className="card-title text-center">{value.tieude}</h2>
+                                                    <h1 className="card-title text-center">{value.tieude}</h1>
+                                                    <br/><br/>
                                                     <p className="card-text">
                                                         {value.tacgia}<br/>
                                                         {value.noidung}
