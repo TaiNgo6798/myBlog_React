@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import Swal from 'sweetalert2';
 class TableDataRow extends Component {
-   
-    
 
-    delete = (id)=> {
+
+
+    delete = (id) => {
         Swal.fire({
             title: 'Are you sure?',
             text: "You won't be able to revert this!",
@@ -13,18 +13,40 @@ class TableDataRow extends Component {
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
             confirmButtonText: 'Yes, delete it!'
-          }).then((result) => {
+        }).then((result) => {
             if (result.value) {
-                this.props.deleteArticle(id);
-              Swal.fire(
-                'Deleted!',
-                'Your file has been deleted.',
-                'success'
-              )
+
+                Swal.fire({
+                    title: 'Enter password to delete !',
+                    input: 'password',
+                    inputPlaceholder: 'Enter your password',
+                    inputAttributes: {
+                      maxlength: 10,
+                      autocapitalize: 'off',
+                      autocorrect: 'off'}
+                }).then((kq) => {
+                    if (kq.value === 'taingo') {
+                        this.props.deleteArticle(id);
+                        Swal.fire(
+                            'Deleted!',
+                            'Your file has been deleted.',
+                            'success'
+                        )
+                    }
+                    else 
+                    {
+                        Swal.fire({
+                            title: 'Wrong password !',
+                            type: 'error'
+                        })
+                    }
+                    
+                })
+
             }
-          });
-          
-          
+        });
+
+
     }
 
     render() {
@@ -37,9 +59,9 @@ class TableDataRow extends Component {
             Content: this.props.Content,
             imgLink: this.props.imgLink
         };
-           
-        
-        
+
+
+
         return (
 
             <tr >
@@ -49,8 +71,8 @@ class TableDataRow extends Component {
                 <td>{this.props.PostDay}</td>
                 <td>
                     <div className="btn-group">
-                        <button type="button" className="btn btn-warning" name={"id" + row.id} onClick = {() => {this.props.editArticle(row)}}>Edit</button>
-                        <button type="button" className="btn btn-danger" name={"deleteRow"} onClick = {() => {this.delete(this.props.id)}}>Delete</button>
+                        <button type="button" className="btn btn-warning" name={"id" + row.id} onClick={() => { this.props.editArticle(row) }}>Edit</button>
+                        <button type="button" className="btn btn-danger" name={"deleteRow"} onClick={() => { this.delete(this.props.id) }}>Delete</button>
                     </div>
                 </td>
             </tr>

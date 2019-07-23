@@ -54,7 +54,13 @@ class Add extends Component {
             };
             
             this.props.submitAdd(article);
-
+            Swal.fire({
+                position: 'top-end',
+                type: 'success',
+                title: 'Your article has been added !',
+                showConfirmButton: false,
+                timer: 1500
+              })
         }
         else {
             Swal.fire({

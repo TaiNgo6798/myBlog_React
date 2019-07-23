@@ -111,6 +111,9 @@ class Admin extends Component {
     submitAdd = (article) => {
 
        articleData.push(article);
+       this.setState({
+           isAdd: false
+       })
 
     }
 
