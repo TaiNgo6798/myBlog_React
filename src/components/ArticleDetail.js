@@ -79,6 +79,15 @@ class ArticleDetail extends Component {
                                             </div>
                                         </div>
                                         {/*Other services*/}
+                                        
+                                        <div className = "row endArticle">
+                                            <div className = "col-2"></div>
+                                            <div className = "col"><hr/></div>
+                                            <div className = "col-2"></div>
+                                        </div>
+                                        
+                                        
+                                        <h6>Xem thêm các bài viết khác nè</h6>
                                         <hr />
                                         <div className="row text-center" >
                                             {

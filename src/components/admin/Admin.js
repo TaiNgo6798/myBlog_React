@@ -32,7 +32,7 @@ class Admin extends Component {
                 const content = element.val().content;
                 const imgLink = element.val().imgLink;
 
-                console.log(element.val());
+                
 
                 arrayData1.push({
                     id: key,

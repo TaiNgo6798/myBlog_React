@@ -34,8 +34,11 @@ class ArticleTable extends Component {
                                 v.author,
                                 v.postDay,
                                 v.content,
-                                v.imgLink
+                                v.imgLink,
+                                key
                             ];
+
+                            valueList = [...valueList].join('-');
                             
 
                             if(this.props.searchText === "")
@@ -46,9 +49,13 @@ class ArticleTable extends Component {
                             else 
                             {
                                 searchText = this.props.searchText;
+                                console.log(searchText);
+                                console.log(valueList.indexOf(searchText));
+                                console.log(valueList)
                             }
                             
-                            if(valueList.includes(searchText))
+                            if(valueList.indexOf(searchText) !== -1)
+
                             return (
                                         <TableDataRow key = {key} 
                                         No = {key} 
