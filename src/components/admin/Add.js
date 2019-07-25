@@ -6,7 +6,7 @@ import CKE from 'ckeditor4-react'
 const uuidv1 = require('uuid/v1');
 const defaultStateValue = {
     Title: "",
-    Quote: "quote ne",
+    
     Author: "",
     PostDay: "",
     Content: "",
@@ -46,7 +46,7 @@ class Add extends Component {
             var article = {
                 id: uuidv1(),
                 title: this.state.Title,
-                quote: this.state.Content.substring(0, 100) + "...",
+                
                 author: this.state.Author,
                 postDay: new Date().toLocaleString(),
                 content: this.state.Content,

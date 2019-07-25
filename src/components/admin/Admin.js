@@ -32,7 +32,7 @@ class Admin extends Component {
                 const content = element.val().content;
                 const imgLink = element.val().imgLink;
 
-                
+
 
                 arrayData1.push({
                     id: key,
@@ -46,7 +46,7 @@ class Admin extends Component {
                 });
             }
             )
-           
+
             this.setState({
                 articles: arrayData1
             })
@@ -54,18 +54,18 @@ class Admin extends Component {
     }
 
     getData = () => {
-        if(this.state.articles)
-     
-            return(
-                
-                <ArticleTable 
-                searchText={this.state.searchText} 
-                data={this.state.articles} 
-                editArticle={(row) => { this.editArticle(row) }} 
-                deleteArticle={(articleid) => { this.submitDelete(articleid) }}/>
+        if (this.state.articles)
+
+            return (
+
+                <ArticleTable
+                    searchText={this.state.searchText}
+                    data={this.state.articles}
+                    editArticle={(row) => { this.editArticle(row) }}
+                    deleteArticle={(articleid) => { this.submitDelete(articleid) }} />
             )
-        
-      
+
+
     }
 
 
@@ -110,10 +110,10 @@ class Admin extends Component {
 
     submitAdd = (article) => {
 
-       articleData.push(article);
-       this.setState({
-           isAdd: false
-       })
+        articleData.push(article);
+        this.setState({
+            isAdd: false
+        })
 
     }
 
@@ -148,36 +148,31 @@ class Admin extends Component {
 
     render() {
         return (
-            <div>
-                <section>
+
+            <section>
+                <div className="container">
                     <h1 className="text-center">Articles</h1>
-
-                    <div className="container">
-
-                        <div className="row">
-                            <div className="col-12">
-                                <Search isAdd={this.state.isAdd} changeAddStatus={() => this.changeisAdd()} search={(searchText) => this.searchClick(searchText)} />
-
-                            </div>
-                            <div className="col-12">
-                                <br />
-                            </div>
-                            <div className = "col-12">
+                    <div className="row">
+                        <div className="col-12">
+                            <Search isAdd={this.state.isAdd} changeAddStatus={() => this.changeisAdd()} search={(searchText) => this.searchClick(searchText)} />
+                        </div>
+                        <div className="col-12">
+                            <br />
+                        </div>
+                        <div className="col-12">
                             <Add submitAdd={(article) => this.submitAdd(article)} isAdd={this.state.isAdd} closeBtn={() => this.changeisAdd()} />
                             <EditForm submitEdit={(article) => this.submitEdit(article)} isEdit={this.state.isEdit} closeBtn={() => this.changeisEdit(false)} row={this.state.editArticle} />
 
-                            </div>
-                            
-                            <div className="col-12">
-                                {this.getData()}
-                            </div>
-
                         </div>
-
                     </div>
-                </section>
 
-            </div>
+
+                    {this.getData()}
+
+                </div>
+            </section>
+
+
         );
     }
 }

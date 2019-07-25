@@ -64,7 +64,7 @@ class TableDataRow extends Component {
 
         return (
 
-            <tr >
+            <tr>
                 <th scope="row">{this.props.No}</th>
                 <td>{this.props.Title}</td>
                 <td>{this.props.Author}</td>

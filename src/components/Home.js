@@ -23,18 +23,18 @@ class Home extends Component {
         articles.forEach(element => {
             const key = element.key
             const title = element.val().title;
-            const quote = element.val().quote;
+            
             const author = element.val().author;
             const postDay = element.val().postDay;
             const content = element.val().content;
             const imgLink = element.val().imgLink;
 
-            console.log(element.val());
+           
 
             arrayData1.push({
                 id: key,
                 title: title,
-                quote: quote,
+                
                 author: author,
                 postDay: postDay,
                 content: content,
@@ -66,12 +66,10 @@ class Home extends Component {
                 <h1 className = "tieude-welcome">
                   <span >CHÀO MỪNG CÁC BẠN ĐẾN VỚI BLOG CỦA MÌNH !</span>
                 </h1>
-                <br />
-                <br />
-                <br />
+                
               </div>
             </div>
-
+            <h5>Các bài viết mới</h5><hr></hr>
             <div className="row text-center">
               {
 
@@ -81,8 +79,7 @@ class Home extends Component {
                     <SuggestArticlesList 
                     key={key} 
                     id = {v.id}
-                    Title = {v.title}
-                    Quote = {v.quote}
+                    Title = {v.title} 
                     Author = {v.author}
                     PostDay = {v.postDay}
                     Content = {v.content}

@@ -53,11 +53,15 @@ a {
 color: black;
 }
 a:hover {
-  color: #fe03e9;
+  color: #ffbd39;
+}
+
+.a-content a{
+  color: #ffbd39;
 }
 
 .text-primary {
-  color: #fed136 !important;
+  color: #ffbd39 !important;
 }
 
 
@@ -65,7 +69,9 @@ a:hover {
 h1.tieude-welcome{
   
   font-family: 'Amatic SC', cursive;
-  font-weight: 700
+  font-weight: 700;
+  margin-bottom: 8rem;
+  margin-top: 2rem
 }
 h1,
 h2,
@@ -138,14 +144,14 @@ img::-moz-selection {
   text-transform: uppercase;
   color: white;
   border: 0;
-  background-color: #fe03e9;
+  background-color: #ffbd39;
   font-family: 'Quicksand', sans-serif;
   
 
 }
 
 #mainNav .navbar-brand {
-  color: #fe03e9;
+  color: #ffbd39;
   font-family: 'Kalam', cursive;
 
   font-weight: 400;
@@ -153,7 +159,7 @@ img::-moz-selection {
 }
 
 #mainNav .navbar-brand.active, #mainNav .navbar-brand:active, #mainNav .navbar-brand:focus, #mainNav .navbar-brand:hover {
-  color: #fe03e9;
+  color: #ffbd39;
 }
 
 #mainNav .navbar-nav .nav-item .nav-link {
@@ -167,7 +173,7 @@ img::-moz-selection {
 }
 
 #mainNav .navbar-nav .nav-item .active{
-  color: #fe03e9;
+  color: #ffbd39;
   
 }
 
@@ -311,7 +317,7 @@ ul.social-buttons li a {
 }
 
 ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons li a:hover {
-  background-color: #fed136;
+  background-color: #ffbd39;
 }
 
 

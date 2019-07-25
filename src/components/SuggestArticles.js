@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
-import htmlParser from 'react-html-parser';
+
 
 
 class SuggestArticlesList extends Component {
@@ -49,7 +49,7 @@ class SuggestArticlesList extends Component {
                                 </b>
                             </p>
                         </h5>
-                        <p className="card-text">{htmlParser(this.props.Quote)}</p>
+                        
                     </div>
                 </div>
             </div>

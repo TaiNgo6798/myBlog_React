@@ -10,7 +10,7 @@ class ArticleTable extends Component {
         
         return (
 
-            <div>
+ 
                 <table className="table">
                     <thead className="thead">
                         <tr>
@@ -30,7 +30,7 @@ class ArticleTable extends Component {
                             var valueList = [
                                 v.id,
                                 v.title,
-                                v.quote,
+                                
                                 v.author,
                                 v.postDay,
                                 v.content,
@@ -49,9 +49,7 @@ class ArticleTable extends Component {
                             else 
                             {
                                 searchText = this.props.searchText;
-                                console.log(searchText);
-                                console.log(valueList.indexOf(searchText));
-                                console.log(valueList)
+                                
                             }
                             
                             if(valueList.indexOf(searchText) !== -1)
@@ -60,7 +58,7 @@ class ArticleTable extends Component {
                                         <TableDataRow key = {key} 
                                         No = {key} 
                                         Title = {v.title} 
-                                        Quote = {v.quote}
+                                        
                                         Author = {v.author} 
                                         PostDay = {v.postDay} 
                                         Content = {v.content}
@@ -81,7 +79,7 @@ class ArticleTable extends Component {
                     </tbody>
                 </table>
 
-            </div>
+            
 
 
         );
