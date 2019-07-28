@@ -64,7 +64,7 @@ class ArticleTable extends Component {
                                         Content = {v.content}
                                         imgLink = {v.imgLink}
                                         id = {v.id} 
-
+                                        
                                         editArticle = {(row) => {this.props.editArticle(row)}} 
                                         deleteArticle = {(articleid) => {this.props.deleteArticle(articleid)}}/>
                                 )

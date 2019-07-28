@@ -3,10 +3,9 @@ import Swal from 'sweetalert2';
 import CKE from 'ckeditor4-react'
 
 
-const uuidv1 = require('uuid/v1');
+
 const defaultStateValue = {
     Title: "",
-    
     Author: "",
     PostDay: "",
     Content: "",
@@ -44,9 +43,8 @@ class Add extends Component {
 
         if (this.state.Title !== "" && this.state.Author !== "") {
             var article = {
-                id: uuidv1(),
-                title: this.state.Title,
                 
+                title: this.state.Title,
                 author: this.state.Author,
                 postDay: new Date().toLocaleString(),
                 content: this.state.Content,

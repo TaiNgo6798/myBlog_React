@@ -49,11 +49,12 @@ class TableDataRow extends Component {
 
     }
 
+   
+
     render() {
         var row = {
             id: this.props.id,
             Title: this.props.Title,
-            Quote: this.props.Quote,
             Author: this.props.Author,
             PostDay: this.props.PostDay,
             Content: this.props.Content,
@@ -71,7 +72,7 @@ class TableDataRow extends Component {
                 <td>{this.props.PostDay}</td>
                 <td>
                     <div className="btn-group">
-                        <button type="button" className="btn btn-warning" name={"id" + row.id} onClick={() => { this.props.editArticle(row) }}>Edit</button>
+                        <button type="button" className="btn btn-warning" name={"id" + row.id} onClick={() => { this.props.editArticle(row); }}>Edit</button>
                         <button type="button" className="btn btn-danger" name={"deleteRow"} onClick={() => { this.delete(this.props.id) }}>Delete</button>
                     </div>
                 </td>

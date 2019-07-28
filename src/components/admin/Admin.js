@@ -62,7 +62,8 @@ class Admin extends Component {
                     searchText={this.state.searchText}
                     data={this.state.articles}
                     editArticle={(row) => { this.editArticle(row) }}
-                    deleteArticle={(articleid) => { this.submitDelete(articleid) }} />
+                    deleteArticle={(articleid) => { this.submitDelete(articleid) }} 
+                    changeisEdit = {(isEdit) => this.changeisEdit(isEdit)}/>
             )
 
 
@@ -77,17 +78,21 @@ class Admin extends Component {
     }
 
     changeisEdit = (isEdit) => {
-        if (isEdit === true)
+        if (isEdit === true) {
             this.setState({
                 isEdit: true,
                 isAdd: false
 
             });
+            
+           
+        }
         else
             if (isEdit === false)
                 this.setState({
                     isEdit: false
                 });
+               
 
     }
 
@@ -98,13 +103,12 @@ class Admin extends Component {
 
     }
 
-    editArticle = (row) => {
+    editArticle = (row) => {// recieve edit-article from TableDataRow then set it to state for Editform
         this.changeisEdit(true);
         this.setState({
             editArticle: row
         }
         );
-
 
     }
 
@@ -123,27 +127,25 @@ class Admin extends Component {
 
     submitEdit = (article) => {
 
-        var newArticles = this.state.articles;
-
-        newArticles.forEach((value, key) => {
-            if (value.id === article.id) {
-
-                if (article.Title !== "")
-                    value.Title = article.Title;
-                if (article.Author !== "")
-                    value.Author = article.Author;
-                if (article.PostDay !== "")
-                    value.PostDay = article.PostDay;
-            }
-        }
-        );
-
-        this.setState({
-            articles: newArticles
+        articleData.child(article.id).update({
+            title: article.Title,
+            author: article.Author,
+            content: article.Content,
+            imgLink: article.imgLink
         });
 
+    }
 
-
+    showEditForm = ()=> {
+        if(this.state.isEdit === true)
+        return (
+            <EditForm 
+            submitEdit={(article) => this.submitEdit(article)} 
+             
+            row={this.state.editArticle} 
+            closeBtn = {(isEdit) => this.changeisEdit(isEdit)}/>
+            
+        )
     }
 
     render() {
@@ -161,7 +163,7 @@ class Admin extends Component {
                         </div>
                         <div className="col-12">
                             <Add submitAdd={(article) => this.submitAdd(article)} isAdd={this.state.isAdd} closeBtn={() => this.changeisAdd()} />
-                            <EditForm submitEdit={(article) => this.submitEdit(article)} isEdit={this.state.isEdit} closeBtn={() => this.changeisEdit(false)} row={this.state.editArticle} />
+                            {this.showEditForm()}
 
                         </div>
                     </div>
