@@ -45,25 +45,47 @@ class EditForm extends Component {
 
     createArticle = () => {
         if (this.state.Title !== "" && this.state.Author !== "") {
-            var article = {
-                id: this.props.row.id,
-                Title: this.state.Title,
-                Author: this.state.Author,
-                Content: this.state.Content,
-                imgLink: this.state.imgLink
-            };
-            
-            this.props.submitEdit(article);
-            this.setState(defaultStateValue);
-            this.props.closeBtn(false);
-
             Swal.fire({
-                position: 'top-end',
-                type: 'success',
-                title: 'Your article has been edited !',
-                showConfirmButton: false,
-                timer: 1500
-              })
+                title: 'Enter password to delete !',
+                input: 'password',
+                inputPlaceholder: 'Enter your password',
+                inputAttributes: {
+                  maxlength: 10,
+                  autocapitalize: 'off',
+                  autocorrect: 'off'}
+            }).then((kq) => {
+                if (kq.value === 'taingo') {
+                    var article = {
+                        id: this.props.row.id,
+                        Title: this.state.Title,
+                        Author: this.state.Author,
+                        Content: this.state.Content,
+                        imgLink: this.state.imgLink
+                    };
+                    
+                    this.props.submitEdit(article);
+                    this.setState(defaultStateValue);
+                    this.props.closeBtn(false);
+        
+                    Swal.fire({
+                        position: 'top-end',
+                        type: 'success',
+                        title: 'Your article has been edited !',
+                        showConfirmButton: false,
+                        timer: 1500
+                      })
+                    
+                }
+                else 
+                {
+                    Swal.fire({
+                        title: 'Wrong password !',
+                        type: 'error'
+                    })
+                }
+                
+            })
+            
         }
         else {
             Swal.fire({
@@ -74,7 +96,7 @@ class EditForm extends Component {
 
             })
         }
-        this.setState(defaultStateValue)
+       
         
 
     }
