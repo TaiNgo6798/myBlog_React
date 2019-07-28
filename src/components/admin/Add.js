@@ -42,23 +42,48 @@ class Add extends Component {
 
 
         if (this.state.Title !== "" && this.state.Author !== "") {
-            var article = {
-                
-                title: this.state.Title,
-                author: this.state.Author,
-                postDay: new Date().toLocaleString(),
-                content: this.state.Content,
-                imgLink: this.state.imgLink
-            };
-            
-            this.props.submitAdd(article);
             Swal.fire({
-                position: 'top-end',
-                type: 'success',
-                title: 'Your article has been added !',
-                showConfirmButton: false,
-                timer: 1500
-              })
+                title: 'Enter password to delete !',
+                input: 'password',
+                inputPlaceholder: 'Enter your password',
+                inputAttributes: {
+                  maxlength: 10,
+                  autocapitalize: 'off',
+                  autocorrect: 'off'}
+            }).then((kq) => {
+                if (kq.value === 'taingoadd') {
+                    var article = {
+                
+                        title: this.state.Title,
+                        author: this.state.Author,
+                        postDay: new Date().toLocaleString(),
+                        content: this.state.Content,
+                        imgLink: this.state.imgLink
+                    };
+                    
+                    this.props.submitAdd(article);
+                    this.setState(defaultStateValue)
+                    Swal.fire({
+                        position: 'top-end',
+                        type: 'success',
+                        title: 'Your article has been added !',
+                        showConfirmButton: false,
+                        timer: 1500
+                      })
+        
+                    
+                }
+                else 
+                {
+                    Swal.fire({
+                        title: 'Wrong password !',
+                        type: 'error'
+                    })
+                }
+                
+            })
+            
+           
         }
         else {
             Swal.fire({
@@ -69,7 +94,7 @@ class Add extends Component {
 
             })
         }
-        this.setState(defaultStateValue)
+       
 
     }
 
