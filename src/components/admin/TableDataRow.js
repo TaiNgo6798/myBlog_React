@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import Swal from 'sweetalert2';
+import animateScrollTo from 'animated-scroll-to';
+
+
 class TableDataRow extends Component {
 
 
@@ -60,6 +63,11 @@ class TableDataRow extends Component {
         return str;
     }
 
+    editClick = (row) => {
+            this.props.editArticle(row);
+   
+    }
+
     render() {
         var row = {
             id: this.props.id,
@@ -81,7 +89,7 @@ class TableDataRow extends Component {
                 <td>{this.props.PostDay}</td>
                 <td>
                     <div className="btn-group">
-                        <button type="button" className="btn btn-warning" name={"id"} onClick={() => { this.props.editArticle(row); }}>Edit</button>
+                        <button type="button" className="btn btn-warning" name={"id"} onClick={() => { this.editClick(row) }}>Edit</button>
                         <button type="button" className="btn btn-danger" name={"deleteRow"} onClick={() => { this.delete(this.props.id) }}>Delete</button>
                     </div>
                 </td>

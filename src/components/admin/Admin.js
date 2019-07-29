@@ -4,7 +4,7 @@ import Add from './Add';
 import Search from './Search';
 import EditForm from './EditForm';
 import { articleData } from '../fireBase/firebaseConnect';
-
+import animateScrollTo from 'animated-scroll-to';
 
 class Admin extends Component {
 
@@ -21,6 +21,7 @@ class Admin extends Component {
 
 
     componentWillMount() {
+        animateScrollTo(0);
         articleData.on('value', (articles) => {
             var arrayData1 = [];
             articles.forEach(element => {
@@ -62,15 +63,18 @@ class Admin extends Component {
                     searchText={this.state.searchText}
                     data={this.state.articles}
                     editArticle={(row) => { this.editArticle(row) }}
-                    deleteArticle={(articleid) => { this.submitDelete(articleid) }} 
-                    changeisEdit = {(isEdit) => this.changeisEdit(isEdit)}/>
+                    deleteArticle={(articleid) => { this.submitDelete(articleid) }}
+                    changeisEdit={(isEdit) => this.changeisEdit(isEdit)} />
             )
 
 
     }
 
 
+
+
     changeisAdd = () => {
+        animateScrollTo(0);
         this.setState({
             isAdd: !this.state.isAdd,
             isEdit: false
@@ -78,21 +82,22 @@ class Admin extends Component {
     }
 
     changeisEdit = (isEdit) => {
+        animateScrollTo(0);
         if (isEdit === true) {
             this.setState({
                 isEdit: true,
                 isAdd: false
 
             });
-            
-           
+
+
         }
         else
             if (isEdit === false)
                 this.setState({
                     isEdit: false
                 });
-               
+
 
     }
 
@@ -103,12 +108,16 @@ class Admin extends Component {
 
     }
 
-    editArticle = (row) => {// recieve edit-article from TableDataRow then set it to state for Editform
-        this.changeisEdit(true);
-        this.setState({
-            editArticle: row
-        }
-        );
+    editArticle = (row) => {
+        // recieve edit-article from TableDataRow then set it to state for Editform
+       
+            this.changeisEdit(true);
+            this.setState({
+                editArticle: row
+            }
+            );
+
+
 
     }
 
@@ -136,16 +145,16 @@ class Admin extends Component {
 
     }
 
-    showEditForm = ()=> {
-        if(this.state.isEdit === true)
-        return (
-            <EditForm 
-            submitEdit={(article) => this.submitEdit(article)} 
-             
-            row={this.state.editArticle} 
-            closeBtn = {(isEdit) => this.changeisEdit(isEdit)}/>
-            
-        )
+    showEditForm = () => {
+        if (this.state.isEdit === true)
+            return (
+                <EditForm
+                    submitEdit={(article) => this.submitEdit(article)}
+
+                    row={this.state.editArticle}
+                    closeBtn={(isEdit) => this.changeisEdit(isEdit)} />
+
+            )
     }
 
     render() {

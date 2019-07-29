@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import Redirect from 'react-router-dom/Redirect';
+import animateScrollTo from 'animated-scroll-to';
+
+
 class Contact extends Component {
     constructor(props) {
         super(props);
@@ -23,6 +26,11 @@ class Contact extends Component {
             isRedirect: true
         });
     }
+
+    componentWillMount() {
+        animateScrollTo(0);
+    }
+    
 
     render() {
         if(this.state.isRedirect){

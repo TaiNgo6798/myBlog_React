@@ -116,7 +116,9 @@ class EditForm extends Component {
     }
 
     componentWillMount() {
-        
+       
+
+
         this.setState({
             Title: this.props.row.Title,
             Author: this.props.row.Author,
@@ -131,9 +133,8 @@ class EditForm extends Component {
 
     render() {
 
-       
-
         return (
+            
             <div className="row">
                 <div className="col-4">
                     <div className="card border-success mb-3 card-edit" >
