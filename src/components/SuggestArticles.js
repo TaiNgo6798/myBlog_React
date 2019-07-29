@@ -34,20 +34,29 @@ class SuggestArticlesList extends Component {
         // return
         return str;
     }
+
+    showTitle = (str) => {
+        if(str.length > 65)
+        {
+            return str.substr(0,65) + "...";
+        }
+        return str;
+    }
+
     render() {
         return (
             <div className="col-lg-3">
-                <div className="card">
+                <div className="card card-suggest">
                     <Link to={"/articles/" + this.chuyendoiURL(this.props.Title) + "." + this.props.id + ".html"}>
                         <img className="card-img-top" src={this.props.imgLink} alt="a"/>
                     </Link>
                     <div className="card-body">
-                        <h5 className="card-title">
-                            <p>
+                        <h5 className="card-title card-suggest-title">
                                 <b>
-                                {this.props.Title}
-                                </b>
-                            </p>
+                                    {
+                                        this.showTitle(this.props.Title)
+                                    }
+                                </b>         
                         </h5>
                         
                     </div>

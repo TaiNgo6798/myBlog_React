@@ -104,12 +104,14 @@ class EditForm extends Component {
 
     onImageChange = (event) => {
         if (event.target.files && event.target.files[0]) {
+
+            
             let reader = new FileReader();
             reader.onload = (e) => {
                 this.setState({ imgLink: e.target.result });
             };
             reader.readAsDataURL(event.target.files[0]);
-
+            
         }
     }
 
@@ -123,33 +125,28 @@ class EditForm extends Component {
 
         })
 
-    
+        
     }
     
 
-
-
     render() {
 
-        var title = this.props.row.Title;
-        var author = this.props.row.Author;
-        var content = this.props.row.Content;
-        var imgLink = this.props.row.imgLink;
+       
 
         return (
             <div className="row">
                 <div className="col-4">
-                    <div className="card border-success mb-3" >
+                    <div className="card border-success mb-3 card-edit" >
                         <div className="card-header text-center">Edit article</div>
                         <div className="card-body text-success">
                             <form>
-                                <input className="form-control" name="title" type="text" onChange={(event) => { this.isChange(event, "tittle") }} defaultValue={title} />
+                                <input className="form-control" name="title" type="text" onChange={(event) => { this.isChange(event, "tittle") }} defaultValue={this.state.Title} />
                                 <br />
-                                <input className="form-control " name="author" type="text" onChange={(event) => { this.isChange(event, "author") }} defaultValue={author} />
+                                <input className="form-control " name="author" type="text" onChange={(event) => { this.isChange(event, "author") }} defaultValue={this.state.Author} />
                                 <br />
 
-                                <img className="imgPreview" id="target" src={imgLink} /><br /><br />
-                                <input type="file" onChange={this.onImageChange} className="filetype" id="group_image" />
+                                <img className="imgPreview" id="target" src={this.state.imgLink} /><br /><br />
+                                <input type="file" onChange={(event) => this.onImageChange(event)} className="filetype" id="group_image" />
 
                                 <br /><hr></hr>
                                 <button type="reset" className="btn btn-block btn-primary" onClick={() => { this.createArticle() }} >Save</button>
@@ -161,7 +158,11 @@ class EditForm extends Component {
 
                 </div>
                 <div className="col-8">
-                    <CKE onChange={(event) => this.isChange(event, "content")} data={content} />
+                    <CKE  onChange={(event) => this.isChange(event, "content")} data={this.state.Content} 
+                        config={ {
+                        height: '33rem'
+                        } } 
+                    />
                 </div>
             </div>
 

@@ -9,7 +9,7 @@ const defaultStateValue = {
     Author: "",
     PostDay: "",
     Content: "",
-    imgLink: "chua co"
+    imgLink: "img/default.jpg"
 }
 
 class Add extends Component {
@@ -51,7 +51,7 @@ class Add extends Component {
                   autocapitalize: 'off',
                   autocorrect: 'off'}
             }).then((kq) => {
-                if (kq.value === 'taingoadd') {
+                if (kq.value === 'taingo') {
                     var article = {
                 
                         title: this.state.Title,
@@ -62,6 +62,7 @@ class Add extends Component {
                     };
                     
                     this.props.submitAdd(article);
+                    console.log(this.state.imgLink);
                     this.setState(defaultStateValue)
                     Swal.fire({
                         position: 'top-end',
@@ -98,6 +99,7 @@ class Add extends Component {
 
     }
 
+    
     onImageChange = (event) => {
         if (event.target.files && event.target.files[0]) {
             let reader = new FileReader();
@@ -137,7 +139,10 @@ class Add extends Component {
 
                     </div>
                     <div className = "col-8">
-                        <CKE  onChange = {(event) => this.isChange(event,"content")}  />
+                        <CKE  onChange = {(event) => this.isChange(event,"content")} 
+                        config={ {
+                        height: '33rem'
+                        } }  />
                     </div>
                 </div>
 

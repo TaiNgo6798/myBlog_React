@@ -21,26 +21,30 @@ class TableDataRow extends Component {
                     input: 'password',
                     inputPlaceholder: 'Enter your password',
                     inputAttributes: {
-                      maxlength: 10,
-                      autocapitalize: 'off',
-                      autocorrect: 'off'}
+                        maxlength: 10,
+                        autocapitalize: 'off',
+                        autocorrect: 'off'
+                    }
                 }).then((kq) => {
                     if (kq.value === 'taingo') {
                         this.props.deleteArticle(id);
                         Swal.fire(
-                            'Deleted!',
-                            'Your file has been deleted.',
-                            'success'
+                            {
+                                position: 'top-end',
+                                type: 'success',
+                                title: 'Your article has been deleted !',
+                                showConfirmButton: false,
+                                timer: 1000
+                            }
                         )
                     }
-                    else 
-                    {
+                    else {
                         Swal.fire({
                             title: 'Wrong password !',
                             type: 'error'
                         })
                     }
-                    
+
                 })
 
             }
@@ -49,7 +53,12 @@ class TableDataRow extends Component {
 
     }
 
-   
+    showTitle = (str) => {
+        if (str.length > 40) {
+            return str.substr(0, 40) + "...";
+        }
+        return str;
+    }
 
     render() {
         var row = {
@@ -67,12 +76,12 @@ class TableDataRow extends Component {
 
             <tr>
                 <th scope="row">{this.props.No}</th>
-                <td>{this.props.Title}</td>
+                <td>{this.showTitle(this.props.Title)}</td>
                 <td>{this.props.Author}</td>
                 <td>{this.props.PostDay}</td>
                 <td>
                     <div className="btn-group">
-                        <button type="button" className="btn btn-warning" name={"id" + row.id} onClick={() => { this.props.editArticle(row); }}>Edit</button>
+                        <button type="button" className="btn btn-warning" name={"id"} onClick={() => { this.props.editArticle(row); }}>Edit</button>
                         <button type="button" className="btn btn-danger" name={"deleteRow"} onClick={() => { this.delete(this.props.id) }}>Delete</button>
                     </div>
                 </td>
