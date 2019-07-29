@@ -85,7 +85,6 @@ class Home extends Component {
                     Content = {v.content}
                     imgLink = {v.imgLink}
                      />
-
                   )
                 })
               }

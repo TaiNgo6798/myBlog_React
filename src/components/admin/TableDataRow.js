@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Swal from 'sweetalert2';
-import animateScrollTo from 'animated-scroll-to';
+
 
 
 class TableDataRow extends Component {

@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import SuggestArticles from './SuggestArticles.js';
 import {articleData} from './fireBase/firebaseConnect';
 import htmlParser from 'react-html-parser';
-
+import animateScrollTo from 'animated-scroll-to';
 
 class ArticleDetail extends Component {
 
@@ -11,19 +11,20 @@ class ArticleDetail extends Component {
         super(props);
         this.state = {
             
-            articles: []
+            articles: [],
+            articles2:[]
             
         }
     }
     
     
       componentWillMount() {
+        
         articleData.on('value', (articles) => {
             var arrayData1 = [];
             articles.forEach(element => {
                 const key = element.key
                 const title = element.val().title;
-              
                 const author = element.val().author;
                 const postDay = element.val().postDay;
                 const content = element.val().content;
@@ -46,6 +47,7 @@ class ArticleDetail extends Component {
            
             this.setState({
                 articles: arrayData1
+                
             })
         });
     }
@@ -54,10 +56,13 @@ class ArticleDetail extends Component {
         var count = 0;
         return (
             <div>
-                {this.state.articles.map((v, key) => {
+                
+                {
+                    
+                    this.state.articles.map((v, key) => {
                   
                     if ((v.id).toString() === this.props.match.params.id) {
-                        
+                        animateScrollTo(0);
                         return (
                          
                             <div key = {key}>
@@ -70,11 +75,10 @@ class ArticleDetail extends Component {
                                                 <div className="card-body">
                                                     <h1 className="card-title text-center">{v.title}</h1>
                                                     <br/><br/>
-                                                    <p className="card-text a-content">
+                                                    <div className="card-text a-content">
                                                         {v.author}<br/>
                                                         {htmlParser(v.content)}
-                                                       
-                                                    </p>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -90,9 +94,10 @@ class ArticleDetail extends Component {
                                         <h6>Xem thêm các bài viết khác nè</h6>
                                         <hr />
                                         <div className="row text-center" >
+                                            
                                             {
-                                                //do cac bai viet trong json 
-                                                this.state.articles.map((v, key) => {
+                                               
+                                                 this.state.articles.map((v, key) => {
 
                                                     if (v.id.toString() !== this.props.match.params.id && count <= 3) {
                                                         count++;
