@@ -51,7 +51,7 @@ class Add extends Component {
                   autocapitalize: 'off',
                   autocorrect: 'off'}
             }).then((kq) => {
-                if (kq.value === 'Trangtran6798') {
+                if (kq.value === 'theancac') {
                     var article = {
                 
                         title: this.state.Title,
