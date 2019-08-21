@@ -47,7 +47,7 @@ class Add extends Component {
                 input: 'password',
                 inputPlaceholder: 'Enter your password',
                 inputAttributes: {
-                  maxlength: 10,
+                  maxlength: 100,
                   autocapitalize: 'off',
                   autocorrect: 'off'}
             }).then((kq) => {

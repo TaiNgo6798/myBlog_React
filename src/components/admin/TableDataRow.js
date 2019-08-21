@@ -24,12 +24,12 @@ class TableDataRow extends Component {
                     input: 'password',
                     inputPlaceholder: 'Enter your password',
                     inputAttributes: {
-                        maxlength: 10,
+                        maxlength: 100,
                         autocapitalize: 'off',
                         autocorrect: 'off'
                     }
                 }).then((kq) => {
-                    if (kq.value === 'Trangtran6798') {
+                    if (kq.value === 'bobobienthaidel') {
                         this.props.deleteArticle(id);
                         Swal.fire(
                             {
