@@ -2,6 +2,7 @@
   "name": "router_demo",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://TaiNgo6798.github.io/myBlog_React",
   "dependencies": {
     "animated-scroll-to": "^1.2.2",
     "ckeditor4-react": "^1.0.0-beta.2",
@@ -18,14 +19,14 @@
     "sweetalert2": "^8.11.1",
     "uuid": "^3.3.2"
   },
-  "scripts": {
+  "scripts": {    
+    "start": "react-scripts start",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
-  },
+ },
   "eslintConfig": {
     "extends": "react-app"
   },
@@ -35,6 +36,6 @@
     "not ie <= 11",
     "not op_mini all"
   ],
-  "homepage": "https://TaiNgo6798.github.io/myBlog_React",
+  
   "devDependencies": {}
 }
