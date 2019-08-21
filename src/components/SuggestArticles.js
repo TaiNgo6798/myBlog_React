@@ -47,7 +47,7 @@ class SuggestArticlesList extends Component {
         return (
             <div className="col-lg-3">
                 <div className="card card-suggest">
-                    <Link to={"/articles/" + this.chuyendoiURL(this.props.Title) + "." + this.props.id + ".html"}>
+                    <Link to={"/myBlog_React/articles/" + this.chuyendoiURL(this.props.Title) + "." + this.props.id + ".html"}>
                         <img className="card-img-top" src={this.props.imgLink} alt="a"/>
                     </Link>
                     <div className="card-body">
