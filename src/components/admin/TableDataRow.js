@@ -29,7 +29,7 @@ class TableDataRow extends Component {
                         autocorrect: 'off'
                     }
                 }).then((kq) => {
-                    if (kq.value === 'taingo') {
+                    if (kq.value === 'Trangtran6798') {
                         this.props.deleteArticle(id);
                         Swal.fire(
                             {

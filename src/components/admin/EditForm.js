@@ -54,7 +54,7 @@ class EditForm extends Component {
                   autocapitalize: 'off',
                   autocorrect: 'off'}
             }).then((kq) => {
-                if (kq.value === 'taingo') {
+                if (kq.value === 'Trangtran6798') {
                     var article = {
                         id: this.props.row.id,
                         Title: this.state.Title,
