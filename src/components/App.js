@@ -40,7 +40,7 @@ class App extends Component {
       <Router>
         <div >
           <Nav userImgLink = {this.state.userImgLink} userName = {this.state.userName}/>
-          <DieuHuongURL getUIL = {(url) => {this.getUIL(url)}} loggedIn = {this.state.loggedIn} login = {() => this.login()}/>
+          <DieuHuongURL userName = {this.state.userName} getUIL = {(url) => {this.getUIL(url)}} loggedIn = {this.state.loggedIn} login = {() => this.login()}/>
           <Footer/>
         </div>
       </Router>

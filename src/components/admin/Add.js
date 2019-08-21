@@ -41,7 +41,7 @@ class Add extends Component {
     createArticle = () => {
 
 
-        if (this.state.Title !== "" && this.state.Author !== "") {
+        if (this.state.Title !== "") {
             Swal.fire({
                 title: 'Enter password to delete !',
                 input: 'password',
@@ -55,7 +55,7 @@ class Add extends Component {
                     var article = {
                 
                         title: this.state.Title,
-                        author: this.state.Author,
+                        author: this.props.userName,
                         postDay: new Date().toLocaleString(),
                         content: this.state.Content,
                         imgLink: this.state.imgLink
@@ -123,7 +123,7 @@ class Add extends Component {
                                 <form>
                                     <input className="form-control" name="title" type="text" placeholder="Title" onChange={(event) => { this.isChange(event, "tittle") }} />
                                     <br />
-                                    <input className="form-control " name="author" type="text" placeholder="Author" onChange={(event) => { this.isChange(event, "author") }} />
+                                    {/* <input className="form-control " name="author" type="text" placeholder="Author" onChange={(event) => { this.isChange(event, "author") }} /> */}
                                     <br />
 
                                     <img className="imgPreview" id="target" src={this.state.imgLink} /><br /><br />
