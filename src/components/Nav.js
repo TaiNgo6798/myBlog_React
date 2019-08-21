@@ -4,8 +4,6 @@ import { NavLink } from "react-router-dom";
 class nav extends Component {
     render() {
         return (
-            <div>
-
                 <nav className="navbar navbar-expand-lg fixed-top bg-dark" id="mainNav">
                     <div className="container">
                         <NavLink className="navbar-brand " to="/home">TaiNgo</NavLink>
@@ -16,9 +14,7 @@ class nav extends Component {
                         <div className="collapse navbar-collapse" id="navbarResponsive">
                             <ul className="navbar-nav text-uppercase ml-auto">
                                 <li className="nav-item normal">
-
                                     <NavLink to="/home" >HOME</NavLink>
-
                                 </li>
                                 <li className="nav-item">
                                     <NavLink to="/about">About me</NavLink>
@@ -32,9 +28,14 @@ class nav extends Component {
                             </ul>
                         </div>
                     </div>
-                </nav>
+                    <div className = "User text-center">
+                      <img src={this.props.userImgLink} style={{borderRadius: '50%'}} />
 
-            </div>
+
+                        <br></br>{this.props.userName}
+                    </div>
+                </nav>
+ 
         );
     }
 }

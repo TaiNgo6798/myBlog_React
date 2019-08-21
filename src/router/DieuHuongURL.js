@@ -16,8 +16,7 @@ class DieuHuongURL extends Component {
                     <Route path="/contact" component={Contact} />
                     <Route path="/articles/:slug.:id.html" component={ArticleDetail} />
                     <Route path = "/about" component = {About}/>
-                    <Route path = "/admin" component = {Admin}/>
-
+                    <Route path = "/admin" render={() => <Admin  getUIL={(url) => this.props.getUIL(url)} login = {() => this.props.login()} loggedIn = {this.props.loggedIn}/>}/>
                 </div>
             
         );

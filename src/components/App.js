@@ -6,8 +6,32 @@ import Footer from './Footer';
 import DieuHuongURL from '../router/DieuHuongURL';
 
 
-
 class App extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+        userImgLink: "",
+        userName: "Hai dụ",
+        loggedIn: false
+    }
+}
+
+  getUIL = (response) => {
+    this.setState({
+      userImgLink: response.picture.data.url,
+      userName: "Hi " + response.name + " !",
+      loggedIn:true
+    })
+ 
+    
+  }
+  login = () => {
+    this.setState({
+        loggedIn: true
+    })
+}
+
 
   render() {
 
@@ -15,8 +39,8 @@ class App extends Component {
     return (
       <Router>
         <div >
-          <Nav/>
-          <DieuHuongURL/>
+          <Nav userImgLink = {this.state.userImgLink} userName = {this.state.userName}/>
+          <DieuHuongURL getUIL = {(url) => {this.getUIL(url)}} loggedIn = {this.state.loggedIn} login = {() => this.login()}/>
           <Footer/>
         </div>
       </Router>

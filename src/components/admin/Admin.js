@@ -6,6 +6,8 @@ import EditForm from './EditForm';
 import { articleData } from '../fireBase/firebaseConnect';
 import animateScrollTo from 'animated-scroll-to';
 
+import Login from './Login';
+
 class Admin extends Component {
 
     constructor(props) {
@@ -16,6 +18,7 @@ class Admin extends Component {
             articles: [],
             isEdit: false,
             editArticle: ""
+            
         }
     }
 
@@ -110,15 +113,12 @@ class Admin extends Component {
 
     editArticle = (row) => {
         // recieve edit-article from TableDataRow then set it to state for Editform
-       
-            this.changeisEdit(true);
-            this.setState({
-                editArticle: row
-            }
-            );
 
-
-
+        this.changeisEdit(true);
+        this.setState({
+            editArticle: row
+        }
+        );
     }
 
     submitAdd = (article) => {
@@ -150,11 +150,41 @@ class Admin extends Component {
             return (
                 <EditForm
                     submitEdit={(article) => this.submitEdit(article)}
-
                     row={this.state.editArticle}
                     closeBtn={(isEdit) => this.changeisEdit(isEdit)} />
 
             )
+    }
+
+
+
+
+    renderAdminContent = () => {
+
+        if (!this.props.loggedIn)
+            return (<Login getUIL = {(url) => this.props.getUIL(url)} login = {() => this.props.login()}/>)
+        else
+        return (
+            <div>
+                <h1 className="text-center">Articles</h1>
+
+                <div className="row">
+                    <div className="col-12">
+                        <Search isAdd={this.state.isAdd} changeAddStatus={() => this.changeisAdd()} search={(searchText) => this.searchClick(searchText)} />
+                    </div>
+                    <div className="col-12">
+                        <br />
+                    </div>
+                    <div className="col-12">
+                        <Add submitAdd={(article) => this.submitAdd(article)} isAdd={this.state.isAdd} closeBtn={() => this.changeisAdd()} />
+                        {this.showEditForm()}
+                    </div>
+                </div>
+                {this.getData()}
+            </div>
+        )
+
+
     }
 
     render() {
@@ -162,23 +192,8 @@ class Admin extends Component {
 
             <section>
                 <div className="container">
-                    <h1 className="text-center">Articles</h1>
-                    <div className="row">
-                        <div className="col-12">
-                            <Search isAdd={this.state.isAdd} changeAddStatus={() => this.changeisAdd()} search={(searchText) => this.searchClick(searchText)} />
-                        </div>
-                        <div className="col-12">
-                            <br />
-                        </div>
-                        <div className="col-12">
-                            <Add submitAdd={(article) => this.submitAdd(article)} isAdd={this.state.isAdd} closeBtn={() => this.changeisAdd()} />
-                            {this.showEditForm()}
 
-                        </div>
-                    </div>
-
-
-                    {this.getData()}
+                    {this.renderAdminContent()}
 
                 </div>
             </section>
