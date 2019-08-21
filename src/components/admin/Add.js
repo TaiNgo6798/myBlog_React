@@ -52,10 +52,12 @@ class Add extends Component {
                   autocorrect: 'off'}
             }).then((kq) => {
                 if (kq.value === 'theancac') {
+                    console.log(this.props.userName);
                     var article = {
                 
                         title: this.state.Title,
                         author: this.props.userName,
+                        
                         postDay: new Date().toLocaleString(),
                         content: this.state.Content,
                         imgLink: this.state.imgLink
