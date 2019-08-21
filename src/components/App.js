@@ -20,7 +20,7 @@ class App extends Component {
   getUIL = (response) => {
     this.setState({
       userImgLink: response.picture.data.url,
-      userName: "Hi " + response.name + " !",
+      userName: response.name,
       loggedIn:true
     })
  

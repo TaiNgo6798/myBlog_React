@@ -52,7 +52,7 @@ class Add extends Component {
                   autocorrect: 'off'}
             }).then((kq) => {
                 if (kq.value === 'nono') {
-                    console.log(this.props.userName);
+                    
                     var article = {
                 
                         title: this.state.Title,

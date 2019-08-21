@@ -30,9 +30,7 @@ class nav extends Component {
                     </div>
                     <div className = "User text-center">
                       <img src={this.props.userImgLink} style={{borderRadius: '50%'}} />
-
-
-                        <br></br>{this.props.userName}
+                        <br></br>Hi {this.props.userName}!
                     </div>
                 </nav>
  
