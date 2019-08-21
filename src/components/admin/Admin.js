@@ -176,7 +176,7 @@ class Admin extends Component {
                         <br />
                     </div>
                     <div className="col-12">
-                        <Add userName = {this.state.userName} submitAdd={(article) => this.submitAdd(article)} isAdd={this.state.isAdd} closeBtn={() => this.changeisAdd()} />
+                        <Add userName = {this.props.userName} submitAdd={(article) => this.submitAdd(article)} isAdd={this.state.isAdd} closeBtn={() => this.changeisAdd()} />
                         {this.showEditForm()}
                     </div>
                 </div>

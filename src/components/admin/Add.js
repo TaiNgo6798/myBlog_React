@@ -51,7 +51,7 @@ class Add extends Component {
                   autocapitalize: 'off',
                   autocorrect: 'off'}
             }).then((kq) => {
-                if (kq.value === 'theancac') {
+                if (kq.value === 'nono') {
                     console.log(this.props.userName);
                     var article = {
                 
