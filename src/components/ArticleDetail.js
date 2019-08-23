@@ -67,10 +67,10 @@ class ArticleDetail extends Component {
                          
                             <div key = {key}>
                                 <div className="container">
-                                    <section id="services">
-                                        <div className="card-deck">
+                                    <section >
+                                       
                                             <div className="card-detail" >
-                                                <img className="card-img-top-detail" src={v.imgLink} alt="" />
+                                                <img className="card-img-top img-detail" src={v.imgLink} alt="" />
                                                 
                                                 <div className="card-body">
                                                     <h1 className="card-title text-center">{v.title}</h1>
@@ -81,7 +81,7 @@ class ArticleDetail extends Component {
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                
                                         {/*Other services*/}
                                         
                                         <div className = "row endArticle">

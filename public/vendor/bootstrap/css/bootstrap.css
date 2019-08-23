@@ -4687,11 +4687,12 @@ input[type="button"].btn-block {
 }
 
 .card-img-top {
-  width: 100%;
+  
   border-top-left-radius: calc(0.25rem - 1px);
   border-top-right-radius: calc(0.25rem - 1px);
   object-fit: cover;
   height: 10rem;
+  width:100%;
   
 }
 
@@ -4699,11 +4700,12 @@ input[type="button"].btn-block {
   border: none;
 }
 
-.card-img-top-detail {
+.img-detail {
   width: 50%;
-  margin-left: 25%;
+  height:auto;
+  margin: 25%;
   margin-bottom: 5%;
-  
+  margin-top:5%;
 }
 
 .card-img-bottom {
@@ -4717,6 +4719,7 @@ input[type="button"].btn-block {
   display: flex;
   -ms-flex-direction: column;
   flex-direction: column;
+  
 }
 
 .card-deck .card {
