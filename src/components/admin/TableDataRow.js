@@ -19,17 +19,7 @@ class TableDataRow extends Component {
         }).then((result) => {
             if (result.value) {
 
-                Swal.fire({
-                    title: 'Enter password to delete !',
-                    input: 'password',
-                    inputPlaceholder: 'Enter your password',
-                    inputAttributes: {
-                        maxlength: 100,
-                        autocapitalize: 'off',
-                        autocorrect: 'off'
-                    }
-                }).then((kq) => {
-                    if (kq.value === 'bobobienthaidel') {
+               
                         this.props.deleteArticle(id);
                         Swal.fire(
                             {
@@ -40,15 +30,7 @@ class TableDataRow extends Component {
                                 timer: 1000
                             }
                         )
-                    }
-                    else {
-                        Swal.fire({
-                            title: 'Wrong password !',
-                            type: 'error'
-                        })
-                    }
 
-                })
 
             }
         });

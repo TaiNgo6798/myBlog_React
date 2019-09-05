@@ -12,6 +12,6 @@ var firebaseConfig = {
 
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
-  export const articleData = firebase.database().ref('article');
+  export const Data = firebase.database();
 
  

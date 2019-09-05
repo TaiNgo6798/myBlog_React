@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import SuggestArticles from './SuggestArticles.js';
-import {articleData} from './fireBase/firebaseConnect';
+import {Data} from './fireBase/firebaseConnect';
 import htmlParser from 'react-html-parser';
 import animateScrollTo from 'animated-scroll-to';
 
@@ -19,8 +19,8 @@ class ArticleDetail extends Component {
     
     
       componentWillMount() {
-        
-        articleData.on('value', (articles) => {
+        var data = Data.ref('article');
+        data.on('value', (articles) => {
             var arrayData1 = [];
             articles.forEach(element => {
                 const key = element.key
@@ -35,7 +35,6 @@ class ArticleDetail extends Component {
                 arrayData1.push({
                     id: key,
                     title: title,
-                    
                     author: author,
                     postDay: postDay,
                     content: content,

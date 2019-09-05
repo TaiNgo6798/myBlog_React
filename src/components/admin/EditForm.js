@@ -45,16 +45,7 @@ class EditForm extends Component {
 
     createArticle = () => {
         if (this.state.Title !== "" && this.state.Author !== "") {
-            Swal.fire({
-                title: 'Enter password to delete !',
-                input: 'password',
-                inputPlaceholder: 'Enter your password',
-                inputAttributes: {
-                  maxlength: 100,
-                  autocapitalize: 'off',
-                  autocorrect: 'off'}
-            }).then((kq) => {
-                if (kq.value === 'bobobienthai') {
+
                     var article = {
                         id: this.props.row.id,
                         Title: this.state.Title,
@@ -74,18 +65,7 @@ class EditForm extends Component {
                         showConfirmButton: false,
                         timer: 1500
                       })
-                    
-                }
-                else 
-                {
-                    Swal.fire({
-                        title: 'Wrong password !',
-                        type: 'error'
-                    })
-                }
-                
-            })
-            
+                      
         }
         else {
             Swal.fire({

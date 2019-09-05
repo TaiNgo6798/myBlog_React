@@ -42,17 +42,7 @@ class Add extends Component {
 
 
         if (this.state.Title !== "") {
-            Swal.fire({
-                title: 'Enter password to delete !',
-                input: 'password',
-                inputPlaceholder: 'Enter your password',
-                inputAttributes: {
-                  maxlength: 100,
-                  autocapitalize: 'off',
-                  autocorrect: 'off'}
-            }).then((kq) => {
-                if (kq.value === 'nono') {
-                    
+  
                     var article = {
                 
                         title: this.state.Title,
@@ -73,19 +63,7 @@ class Add extends Component {
                         showConfirmButton: false,
                         timer: 1500
                       })
-        
-                    
-                }
-                else 
-                {
-                    Swal.fire({
-                        title: 'Wrong password !',
-                        type: 'error'
-                    })
-                }
-                
-            })
-            
+
            
         }
         else {

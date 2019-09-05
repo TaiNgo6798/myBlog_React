@@ -547,13 +547,13 @@ pre code {
 
 @media (min-width: 576px) {
   .container {
-    max-width: 540px;
+    max-width: 100%;
   }
 }
 
 @media (min-width: 768px) {
   .container {
-    max-width: 500px;
+    max-width: 100%;
   }
 }
 
@@ -4147,6 +4147,7 @@ input[type="button"].btn-block {
   -ms-flex: 1 1 auto;
   flex: 1 1 auto;
   text-align: center;
+  
 }
 
 .nav-justified .nav-item {
@@ -4155,6 +4156,7 @@ input[type="button"].btn-block {
   -ms-flex-positive: 1;
   flex-grow: 1;
   text-align: center;
+  
 }
 
 .tab-content > .tab-pane {
@@ -4228,6 +4230,7 @@ input[type="button"].btn-block {
   display: inline-block;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
+  
 }
 
 .navbar-collapse {

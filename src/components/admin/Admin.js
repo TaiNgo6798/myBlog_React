@@ -3,9 +3,8 @@ import ArticleTable from './ArticleTable';
 import Add from './Add';
 import Search from './Search';
 import EditForm from './EditForm';
-import { articleData } from '../fireBase/firebaseConnect';
+import { Data } from '../fireBase/firebaseConnect';
 import animateScrollTo from 'animated-scroll-to';
-
 import Login from './Login';
 
 class Admin extends Component {
@@ -22,10 +21,12 @@ class Admin extends Component {
         }
     }
 
+    
 
     componentWillMount() {
         animateScrollTo(0);
-        articleData.on('value', (articles) => {
+        const data = Data.ref('article');
+        data.on('value', (articles) => {
             var arrayData1 = [];
             articles.forEach(element => {
                 const key = element.key
@@ -35,7 +36,6 @@ class Admin extends Component {
                 const postDay = element.val().postDay;
                 const content = element.val().content;
                 const imgLink = element.val().imgLink;
-
 
 
                 arrayData1.push({
@@ -123,7 +123,7 @@ class Admin extends Component {
 
     submitAdd = (article) => {
 
-        articleData.push(article);
+        Data.ref('article').push(article);
         this.setState({
             isAdd: false
         })
@@ -131,12 +131,12 @@ class Admin extends Component {
     }
 
     submitDelete = (articleid) => {
-        articleData.child(articleid).remove();
+        Data.ref('article').child(articleid).remove();
     }
 
     submitEdit = (article) => {
 
-        articleData.child(article.id).update({
+        Data.ref('article').child(article.id).update({
             title: article.Title,
             author: article.Author,
             content: article.Content,

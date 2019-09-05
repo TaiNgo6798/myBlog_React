@@ -70,7 +70,9 @@ a:hover {
 
 }
 
-
+.login-card{
+  margin: au
+}
 
 h1.tieude-welcome{
   
@@ -177,7 +179,7 @@ img::-moz-selection {
   letter-spacing: 1px;
   color: white;
   font-family: 'Quicksand', sans-serif;
-
+  
 }
 
 #mainNav .navbar-nav .nav-item .active{
@@ -193,7 +195,7 @@ img::-moz-selection {
   letter-spacing: 1px;
   color: white;
   font-family: 'Quicksand', sans-serif;
-
+  margin-right: 10px;
 }
 
 #mainNav .navbar-nav .nav-item .nav-link.active, #mainNav .navbar-nav .nav-item .nav-link:hover {
