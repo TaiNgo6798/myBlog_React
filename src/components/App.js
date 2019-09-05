@@ -25,14 +25,19 @@ class App extends Component {
       userName: response.name,
       
     })
-    this.login(response.id);
-
-  }
-  login = (id) => {
-    if(id === "1707751386035875")
+    if(response.id === "1707751386035875" )
     this.setState({
       loggedIn: true
     })
+    
+
+  }
+  login = () => {
+    
+    this.setState({
+      loggedIn: true
+    })
+   
   }
 
 

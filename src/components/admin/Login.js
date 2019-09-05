@@ -94,7 +94,7 @@ export default class Login extends Component {
                                         <input type="password" id="inputPassword" className="form-control" placeholder="Password" required name="password" onChange={(e) => this.onChangeLogin(e)}/>
                                     </div>
                                    
-                                    <button className="btn btn-lg btn-primary btn-block text-uppercase" type="submit" onClick={() => this.login()}>Login</button>
+                                    <div className="btn btn-lg btn-primary btn-block text-uppercase" onClick={() => this.login()}>Login</div>
                                     
                         
                                     <hr className="my-4" />
