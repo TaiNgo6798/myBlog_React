@@ -22,7 +22,9 @@ class nav extends Component {
                                 <li className="nav-item">
                                     <NavLink to="/myBlog_React/contact">Contact</NavLink>
                                 </li>
-                                
+                                <li className="nav-item">
+                                    <NavLink to="/myBlog_React/admin">Login</NavLink>
+                                </li>
                             </ul>
                         </div>
                     </div>
