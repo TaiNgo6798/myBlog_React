@@ -65,7 +65,7 @@ export default class Login extends Component {
     }
 
     responseFacebook = (response) => {
-        console.log(response);
+        
         this.props.getUIL(response);
         if (response) {
             this.props.login();

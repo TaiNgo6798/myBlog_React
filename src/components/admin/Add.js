@@ -103,7 +103,7 @@ class Add extends Component {
                                 <form>
                                     <input className="form-control" name="title" type="text" placeholder="Title" onChange={(event) => { this.isChange(event, "tittle") }} />
                                     <br />
-                                    {/* <input className="form-control " name="author" type="text" placeholder="Author" onChange={(event) => { this.isChange(event, "author") }} /> */}
+                                    
                                     <br />
 
                                     <img className="imgPreview" id="target" src={this.state.imgLink} /><br /><br />

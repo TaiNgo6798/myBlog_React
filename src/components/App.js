@@ -14,7 +14,8 @@ class App extends Component {
     this.state = {
       userImgLink: "",
       userName: "Hai dụ",
-      loggedIn: false
+      loggedIn: false,
+      userID: ""
     }
   }
 
@@ -22,13 +23,13 @@ class App extends Component {
     this.setState({
       userImgLink: response.picture.data.url,
       userName: response.name,
-      loggedIn: true
+      
     })
-
+    this.login(response.id);
 
   }
-  login = () => {
-    
+  login = (id) => {
+    if(id === "1707751386035875")
     this.setState({
       loggedIn: true
     })
