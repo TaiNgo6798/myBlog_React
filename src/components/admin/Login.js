@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import FacebookLogin from 'react-facebook-login';
 import {Data} from '../fireBase/firebaseConnect';
+import Swal from 'sweetalert2';
 
 
 export default class Login extends Component {
@@ -54,6 +55,15 @@ export default class Login extends Component {
             this.props.getUIL(user);
             this.props.login();
         }
+        else 
+        {
+            Swal.fire({
+                title: 'Wrong username or password !',
+                type: 'error',
+                confirmButtonColor: '#3085d6'
+
+            })
+        }
     }
 
 
@@ -65,15 +75,14 @@ export default class Login extends Component {
     }
 
     responseFacebook = (response) => {
-        
+    
         this.props.getUIL(response);
-        if (response) {
-            this.props.login();
-        }
+        
     }
 
-
-
+    submitForm = (e) => {
+        e.preventDefault();
+    }
 
     render() {
         return (
@@ -84,17 +93,17 @@ export default class Login extends Component {
                         <div className="card card-signin my-5">
                             <div className="card-body">
                                 <h5 className="card-title text-center">LogIn</h5>
-                                <form className="form-signin">
+                                <form onSubmit = {(e) => this.submitForm(e)}>
                                     <div className="form-label-group">
-                                        <input type="text" id="inputEmail" className="form-control" placeholder="Email address" name="username" required autoFocus onChange={(e) => this.onChangeLogin(e)}/>
+                                        <input type="text" className="form-control" placeholder="Email address" name="username" required autoFocus onChange={(e) => this.onChangeLogin(e)}/>
                                        
                                     </div>
                                     
                                     <div className="form-label-group">
-                                        <input type="password" id="inputPassword" className="form-control" placeholder="Password" required name="password" onChange={(e) => this.onChangeLogin(e)}/>
+                                        <input type="password"  className="form-control" placeholder="Password" required name="password" onChange={(e) => this.onChangeLogin(e)}/>
                                     </div>
                                    
-                                    <div className="btn btn-lg btn-primary btn-block text-uppercase" onClick={() => this.login()}>Login</div>
+                                    <button className="btn btn-lg btn-primary btn-block text-uppercase" onClick={() => this.login()}>Login</button>
                                     
                         
                                     <hr className="my-4" />
